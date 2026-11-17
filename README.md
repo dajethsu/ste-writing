@@ -1,6 +1,6 @@
 # STE Writing｜清楚寫作與文字潤飾
 
-一個可安裝到 Codex 的通用寫作 skill，依 ASD-STE100 的具體規則與跨語言調整方法，讓 AI 生成的文字清楚、具體、自然。
+一個可安裝到 Codex 與 Claude Code 的通用寫作 skill，依 ASD-STE100 的具體規則與跨語言調整方法，讓 AI 生成的文字清楚、具體、自然。
 
 適用於日常回覆、信件、文章、社群貼文、報告、學術文字、介面文案與技術文件。支援生成、改寫、潤飾、摘要和翻譯；可輸出純文字、Markdown 或其他格式。
 
@@ -41,7 +41,34 @@ https://github.com/dajethsu/ste-writing/tree/main/ste-writing
 
 安裝後，在下一輪對話使用 `$ste-writing`。更新時，先備份自己修改過的檔案，再以新版 skill 資料夾取代舊版。
 
+## 安裝到 Claude Code
+
+### 請 Claude Code 安裝
+
+開啟 Claude Code，貼上：
+
+```text
+請從以下 GitHub 目錄下載 ste-writing skill，
+並將包含 SKILL.md 的 ste-writing 資料夾安裝到 ~/.claude/skills/ste-writing/：
+https://github.com/dajethsu/ste-writing/tree/main/ste-writing
+```
+
+### 手動下載
+
+1. [下載 ZIP](https://github.com/dajethsu/ste-writing/archive/refs/heads/main.zip) 並解壓縮。
+2. 將解壓縮後的 `ste-writing` 資料夾整個複製到下方位置。請複製包含 `SKILL.md` 的內層資料夾，而非整個 repo 資料夾。
+
+| 範圍 | 安裝後的 skill 資料夾 |
+|---|---|
+| 所有專案（Windows） | `%USERPROFILE%\.claude\skills\ste-writing\` |
+| 所有專案（macOS / Linux） | `~/.claude/skills/ste-writing/` |
+| 單一專案 | `<專案根目錄>/.claude/skills/ste-writing/` |
+
+Claude Code 在開始新的工作階段時讀取 skill 清單。安裝後，開啟新的工作階段，再輸入 `/ste-writing` 或直接描述寫作需求。`agents/openai.yaml` 只供 Codex 使用，Claude Code 不讀取，保留即可。
+
 ## 如何使用
+
+以下範例使用 Codex 的 `$ste-writing`。在 Claude Code 中，將 `$ste-writing` 換成 `/ste-writing`。
 
 生成新稿：
 
@@ -71,7 +98,7 @@ https://github.com/dajethsu/ste-writing/tree/main/ste-writing
 ste-writing/
 ├── SKILL.md                       寫作流程、跨語言與文體調整
 ├── agents/
-│   └── openai.yaml                Codex 顯示資訊
+│   └── openai.yaml                Codex 顯示資訊（Claude Code 不使用）
 └── references/
     ├── asd-ste100-rules.md        官方九章重點規則摘要與編號
     └── genre-examples.md          六種情境的改寫範例
